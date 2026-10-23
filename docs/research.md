@@ -2,7 +2,7 @@
 
 Checked 23 October 2026. Family: delivery-route-planning. The registry has fleet maintenance, freight forwarding, transport management and field sales builds, but no delivery route-planning anchor. ConductorOne and TrackOnline, tonight's earlier builds, cover different families.
 
-[OptimoRoute pricing](https://optimoroute.com/pricing/) lists Lite at 35.10 and Pro at 44.10 per driver per month with annual billing. Its FAQ gives Pro monthly billing at 49 per driver. A 50-driver Pro annual scenario is 26,460 a year before tax. This is arithmetic from the vendor rate, not a verified customer invoice or a claim about what an existing Enterprise DNA customer pays. Pricing is shown in dollars on the vendor site; confirm billing currency in a quote before purchasing.
+[OptimoRoute pricing](https://optimoroute.com/pricing/) lists Lite at 35.10 and Pro at 44.10 per driver per month with annual billing. Its FAQ gives Pro monthly billing at 49 per driver. A 50-driver Pro annual scenario is 26,460 a year before tax. This is arithmetic from the vendor rate, not a verified customer invoice or a claim about what an existing Enterprise DNA customer pays. The vendor Spanish pricing page explicitly labels the monthly Pro rate USD: https://optimoroute.com/es/precios/. Confirm taxes and billing terms in a quote before purchasing.
 
 Scores in order: annual bill, data-shaped, our buyers, search demand, one-session buildable, import path. These are editorial judgements, not measured market statistics.
 
