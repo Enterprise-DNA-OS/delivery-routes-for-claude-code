@@ -1,13 +1,20 @@
 [
   {
     "name": "week",
-    "title": "This week",
-    "subtitle": "Delivery Routes for Claude Code: what needs attention, rendered by npm run view",
+    "title": "Delivery dispatch desk",
+    "subtitle": "Read-only snapshot. Planned times need dispatcher review.",
     "sections": [
       {
-        "title": "Needs attention",
-        "note": "TODO(author): point this at the industry's attention view (overdue, stuck, quiet).",
-        "sql": "select 'replace me' as item, 'TODO(author)' as why"
+        "title": "Exceptions",
+        "sql": "select name,reason from delivery.exceptions order by name"
+      },
+      {
+        "title": "Route board",
+        "sql": "select name,route_date,driver,vehicle,status,stops,delivered,failed,work_minutes from delivery.route_board order by route_date,name"
+      },
+      {
+        "title": "Unassigned orders",
+        "sql": "select name,due,units from delivery.order_desk where route is null and status='pending' order by due,name"
       }
     ]
   }

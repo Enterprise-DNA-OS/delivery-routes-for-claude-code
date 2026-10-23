@@ -1,11 +1,40 @@
 [
   {
-    "name": "example",
-    "title": "TODO(author): the first document this industry must produce",
-    "for_each": "select gen_random_uuid() as id, 'Example' as name",
+    "name": "route-sheet",
+    "title": "Driver route sheet",
+    "for_each": "select id,name from delivery.routes where status<>'cancelled' order by name",
     "file": "name",
     "sections": [
-      { "title": "Details", "sql": "select 'replace me' as item, $1::text as record_id" }
+      {
+        "title": "Dispatcher release",
+        "note": "Planned times from supplied estimates. Confirm road access, load restraints, rest stops and actual work history before departure.",
+        "sql": "select name,route_date,status,driver,vehicle,work_minutes,break_minutes from delivery.route_board where id=$1"
+      },
+      {
+        "title": "Stops",
+        "sql": "select s.sequence,o.name,o.address,o.units,to_char(make_time(s.arrival_minute/60,s.arrival_minute%60,0),'HH24:MI') planned_service,o.status,o.notes from delivery.stops s join delivery.orders o on o.id=s.order_id where s.route_id=$1 order by s.sequence"
+      },
+      {
+        "title": "Travel and rest plan",
+        "sql": "select e->>'kind' activity,e->>'place' location,e->>'start' start_time,e->>'end' end_time from delivery.routes r cross join lateral jsonb_array_elements(r.timeline) e where r.id=$1"
+      }
+    ]
+  },
+  {
+    "name": "delivery-exceptions",
+    "title": "Delivery exception report",
+    "for_each": "select id,name from delivery.drivers order by name",
+    "file": "name",
+    "sections": [
+      {
+        "title": "Assigned delivery outcomes",
+        "sql": "select r.name route,o.name customer,o.status,o.notes from delivery.routes r join delivery.stops s on s.route_id=r.id join delivery.orders o on o.id=s.order_id where r.driver_id=$1 and o.status='failed'"
+      },
+      {
+        "title": "Recorded work intervals",
+        "note": "Recorded intervals are not an approved logbook. Reconcile all other work and previous periods.",
+        "sql": "select started_at,ended_at,kind,evidence from delivery.work where driver_id=$1 order by started_at"
+      }
     ]
   }
 ]

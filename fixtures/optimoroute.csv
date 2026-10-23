@@ -1,0 +1,2 @@
+Order ID,Customer,Location Name,Location ID,Due date,Duration,Time windows,Capacity Labels,Notes
+EXAMPLE-1,Example Store,Example Road,example-store,2026-11-01,10,09:00-12:00,Crates:4,"Fictional, quoted field"
