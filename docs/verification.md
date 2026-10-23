@@ -7,7 +7,7 @@
 - The same npm test passed against a fresh local PostgreSQL 18.4 database: all 29 commands.
 - npm run demo, npm run view and npm run docs passed with fictional data. Four branded HTML documents were produced after the demo route was planned.
 - The weekly report was opened in headless Chromium and its screenshot inspected.
-- The page gate passed with zero brand errors and three actual captured command outputs.
+- The page gate passed with zero brand errors and three actual captured command outputs. The unchanged landing template was rendered in an isolated Astro preview: HTTP 200, noindex/nofollow, eight booking links and no mobile overflow. Desktop and mobile screenshots were inspected. The gate also passed against the rendered HTML.
 - GitHub workflow 39894853684 could not start any Windows, Linux or Postgres jobs because the account has a billing or spending-limit restriction. Windows execution remains unverified. The workflow retains Windows and Linux Node 20/22 plus Postgres coverage for a future run.
 
 The smoke suite checks allocation gates, changed-plan rejection, eligibility, capacity, shift and return limits, planned breaks, recorded work thresholds, source preservation, repeat import, full import rollback, exports, drafts and HTML rendering. It creates an isolated temporary database and removes it after completion. TEST_DATABASE_URL must point to a fresh disposable Postgres database. It refuses a pre-existing delivery schema. No customer system was used.
